@@ -135,7 +135,7 @@ deployTestCase(){
 	eval sed -i -e 's/\{SERVER_OUTPUT_PORT\}/$SERVER_OUTPUT_PORT/' $CASE_DIR/expectedData.yaml # replace value of `{SERVER_OUTPUT_PORT}` parameter in testcase.desc
 	cd $CASE_DIR && docker-compose rm -s -f -v
 
-  docker-compose -f $CASE_DIR/docker-compose.yml up -d > /dev/null
+  docker-compose -f $CASE_DIR/docker-compose.yml up -d
 	sleep 60
 
 	CASE_REQUEST_URL=$(grep "case.request_url" $CASE_DIR/testcase.desc | awk -F '=' '{print $2}')
